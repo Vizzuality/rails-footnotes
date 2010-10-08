@@ -43,7 +43,9 @@ module Footnotes
 
         def controller_text
           if controller_filename
-            @controller_text ||= IO.read(controller_filename)
+            if File.file?(controller_filename)
+              @controller_text ||= IO.read(controller_filename)
+            end
           end
         end
 
